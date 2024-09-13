@@ -32,7 +32,30 @@ my_list[0], my_list[-1] = my_list[-1], my_list[0]
 # Print the modified list  Done By Tathya
 print("List after swapping first and last elements:", my_list)
 #<<<<<<< ashishbranch
-# this is me ashish  
+# this is me ashish 
+
+def is_prime(n):
+    """Check if a number is prime."""
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def generate_odd_primes(limit):
+    """Generate a list of odd prime numbers up to the specified limit."""
+    odd_primes = []
+    for num in range(3, limit + 1, 2):
+        if is_prime(num):
+            odd_primes.append(num)
+    return odd_primes
+
+# Example usage:
+limit = 100  # You can adjust this limit as needed
+odd_prime_numbers = generate_odd_primes(limit)
+print("Odd prime numbers up to", limit, "are:", odd_prime_numbers)
+
 
 
 
