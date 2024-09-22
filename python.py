@@ -1,42 +1,46 @@
-# Python3 program to add two numbers
-num1 = 15
-num2 = 12
+def menu():
+    print("""
+    Choose an operation:
+    1. Add two numbers (Tarun's Contribution)
+    2. Swap first and last elements in a list (Tathya's Contribution)
+    3. Check prime numbers and generate odd primes (Ashish's Contribution)
+    4. Sieve of Eratosthenes to find primes (Rigal's Contribution)
+    5. Odd or Even check (Vipul's Contribution)
+    6. Simple Guessing Game (Ayush Dubey's Contribution)
+    7. Find Majority Element (Shourya's Contribution)
+    8. Multiply two numbers (Shreyash's Contribution)
+    9. Factorial of a number (Gokul's Contribution)
+    10. Find square root of a number (Veeraj's Contribution)
+    11. Exit
+    """)
 
-# Adding two nos
-sum = num1 + num2
+# Addition by Tarun
+def tarun_add():
+    num1 = 15
+    num2 = 12
+    sum = num1 + num2
+    print("Sum of", num1, "and", num2, "is", sum)
 
+# Swap first and last elements by Tathya
+def tathya_swap():
+    my_list = [1, 2, 3, 4, 5]
+    my_list[0], my_list[-1] = my_list[-1], my_list[0]
+    print("List after swapping first and last elements:", my_list)
 
-# printing values
-print("Sum of", num1, "and", num2 , "is", sum)
+# Check prime numbers and generate odd primes by Ashish
+def ashish_prime():
+    limit = 100
+    odd_prime_numbers = generate_odd_primes(limit)
+    print("Odd prime numbers up to", limit, "are:", odd_prime_numbers)
 
-#<<<<<<< collabRigal
-
-
-#Collaborator - Rigal 21BEC037
-#Multiply
-number1 = 20
-number2 = 30
-
-multip = number1 * number2
-
-#print
-print("Product of ", number1, "and ", number2, "is", multip)
-
-#end
-=======
-# Initialize a list Done By Tathya
-my_list = [1, 2, 3, 4, 5]
-
-# Interchange first and last elements  Done By Tathya
-my_list[0], my_list[-1] = my_list[-1], my_list[0]
-
-# Print the modified list  Done By Tathya
-print("List after swapping first and last elements:", my_list)
-#<<<<<<< ashishbranch
-# this is me ashish 
+def generate_odd_primes(limit):
+    odd_primes = []
+    for num in range(3, limit + 1, 2):
+        if is_prime(num):
+            odd_primes.append(num)
+    return odd_primes
 
 def is_prime(n):
-    """Check if a number is prime."""
     if n <= 1:
         return False
     for i in range(2, int(n**0.5) + 1):
@@ -44,68 +48,37 @@ def is_prime(n):
             return False
     return True
 
-def generate_odd_primes(limit):
-    """Generate a list of odd prime numbers up to the specified limit."""
-    odd_primes = []
-    for num in range(3, limit + 1, 2):
-        if is_prime(num):
-            odd_primes.append(num)
-    return odd_primes
-
-# Example usage:
-limit = 100  # You can adjust this limit as needed
-odd_prime_numbers = generate_odd_primes(limit)
-print("Odd prime numbers up to", limit, "are:", odd_prime_numbers)
-
-
-
-
-# 21BEC037 - Rigal - Code to find prime numbers in a given range (SIEVE OF ERATOSTHENES)
-def sieve_of_eratosthenes(n):
-    # Create a boolean array "is_prime[0..n]" and initialize
-    # all entries as true. A value in is_prime[i] will finally be false if i is Not a prime, else true.
-    is_prime = [True] * (n + 1)
-    p = 2  # Start with the first prime number
-
-    while (p * p <= n):
-        # If is_prime[p] is true, then it is a prime
-        if is_prime[p]:
-            # Updating all multiples of p to not prime
-            for i in range(p*p, n+1, p):
-                is_prime[i] = False
-        p+=1
-
-    # Collecting all prime numbers
-    primes = [p for p in range(2, n + 1) if is_prime[p]]
-    return primes
-
-# Example usage
-if __name__ == "__main__":
-    n = 30  # Find all primes up to 30
+# Sieve of Eratosthenes by Rigal
+def rigal_sieve():
+    n = 30
     prime_numbers = sieve_of_eratosthenes(n)
     print(f"Prime numbers up to {n}: {prime_numbers}")
 
+def sieve_of_eratosthenes(n):
+    is_prime = [True] * (n + 1)
+    p = 2
+    while (p * p <= n):
+        if is_prime[p]:
+            for i in range(p * p, n + 1, p):
+                is_prime[i] = False
+        p += 1
+    primes = [p for p in range(2, n + 1) if is_prime[p]]
+    return primes
 
+# Odd or Even by Vipul
+def vipul_odd_even():
+    n1 = 3
+    if n1 % 2 == 0:
+        print("This is Even number")
+    else:
+        print("This is Odd number")
 
-
-# Odd and Even python program Done by Ayush Dubey
-n1 = 3
-if n1 % 2==0:
-    print("This is Even number")
-else:
-    print("This is Odd number")
-#<<<<<<< dubey
-
-
-
-# Python program for a simple guessing game by Ayush Dubey
-import random
-
-def guessing_game():
+# Simple Guessing Game by Ayush Dubey
+def ayush_guessing_game():
+    import random
     number_to_guess = random.randint(1, 10)
     attempts = 0
     guess = None
-
     while guess != number_to_guess:
         guess = int(input("Guess a number between 1 and 10: "))
         attempts += 1
@@ -116,131 +89,87 @@ def guessing_game():
         else:
             print(f"Congratulations! You guessed the number in {attempts} attempts.")
 
-guessing_game()
-#=======
-#>>>>>>> main
-#>>>>>>> main
-#>>>>>>> main
+# Find Majority Element by Shourya
+def shourya_find_majority():
+    arr = [1, 1, 1, 1, 2, 3, 4]
+    n = len(arr)
+    majority = findMajority(arr, n)
+    print("The majority element is:", majority)
 
-#I am Shreyash
-
-main
-#I am Shourya prakash
-# Python implementation for the above approach
-
-# Function to find majority element
 def findMajority(arr, n):
     candidate = -1
     votes = 0
-    
-    # Finding majority candidate
-    for i in range (n):
-        if (votes == 0):
+    for i in range(n):
+        if votes == 0:
             candidate = arr[i]
             votes = 1
         else:
-            if (arr[i] == candidate):
+            if arr[i] == candidate:
                 votes += 1
             else:
                 votes -= 1
     count = 0
-    
-    # Checking if majority candidate occurs more than n/2
-    # times
-    for i in range (n):
-        if (arr[i] == candidate):
+    for i in range(n):
+        if arr[i] == candidate:
             count += 1
-            
-    if (count > n // 2):
+    if count > n // 2:
         return candidate
     else:
         return -1
 
-# Driver Code 
+# Multiplication by Shreyash
+def shreyash_multiply():
+    number1 = 20
+    number2 = 30
+    multip = number1 * number2
+    print("Product of", number1, "and", number2, "is", multip)
 
-arr = [ 1, 1, 1, 1, 2, 3, 4 ]
-n = len(arr)
-majority =  findMajority(arr, n)
-print(" The majority element is :" ,majority)
-    
-    
-=======
-#I am vipul bagde and this is my contribution
+# Factorial by Gokul
+def gokul_factorial():
+    num = 7
+    factorial = 1
+    if num < 0:
+        print("Sorry, factorial does not exist for negative numbers")
+    elif num == 0:
+        print("The factorial of 0 is 1")
+    else:
+        for i in range(1, num + 1):
+            factorial *= i
+        print("The factorial of", num, "is", factorial)
 
-// C++ program to implement the approach
+# Square Root by Veeraj
+def veeraj_square_root():
+    num = 8
+    num_sqrt = num ** 0.5
+    print('The square root of %0.3f is %0.3f' % (num, num_sqrt))
 
-#include <bits/stdc++.h>
-using namespace std;
+# Main Driver Function
+while True:
+    menu()
+    choice = int(input("Enter your choice: "))
 
-// Function to check if both arrays are equal
-bool checkArrays(int arr1[], int arr2[],
-				int n, int m)
-{
-	// If lengths of array are not equal
-	// means array are not equal
-	if (n != m)
-		return false;
-
-	// Sort both arrays
-	sort(arr1, arr1 + n);
-	sort(arr2, arr2 + m);
-
-	// Linearly compare elements
-	for (int i = 0; i < n; i++)
-		if (arr1[i] != arr2[i])
-			return false;
-
-	// If elements are same
-	return true;
-}
-
-// Driver Code
-int main()
-{
-	int arr1[] = { 1, 2, 3, 4, 5 };
-	int arr2[] = { 5, 4, 3, 2, 1 };
-	int N = sizeof(arr1) / sizeof(int);
-	int M = sizeof(arr2) / sizeof(int);
-
-	// Function call
-	if (checkArrays(arr1, arr2, N, M))
-		cout << "Equal";
-	else
-		cout << "Not Equal";
-	return 0;
-}
-
-main
-
-# I am Rs Gokul varun this is my contribution
-# Python program to find the factorial of a number provided by the user.
-
-# change the value for a different result
-num = 7
-
-# To take input from the user
-#num = int(input("Enter a number: "))
-
-factorial = 1
-
-# check if the number is negative, positive or zero
-if num < 0:
-   print("Sorry, factorial does not exist for negative numbers")
-elif num == 0:
-   print("The factorial of 0 is 1")
-else:
-   for i in range(1,num + 1):
-       factorial = factorial*i
-   print("The factorial of",num,"is",factorial)
-
-# I am veeraj i am adding my contribution
-# Python Program to calculate the square root
-
-# Note: change this value for a different result
-num = 8 
-
-# To take the input from the user
-#num = float(input('Enter a number: '))
-
-num_sqrt = num ** 0.5
-print('The square root of %0.3f is %0.3f'%(num ,num_sqrt))
+    if choice == 1:
+        tarun_add()
+    elif choice == 2:
+        tathya_swap()
+    elif choice == 3:
+        ashish_prime()
+    elif choice == 4:
+        rigal_sieve()
+    elif choice == 5:
+        vipul_odd_even()  # Updated contribution
+    elif choice == 6:
+        ayush_guessing_game()
+    elif choice == 7:
+        shourya_find_majority()
+    elif choice == 8:
+        shreyash_multiply()
+    elif choice == 9:
+        gokul_factorial()
+    elif choice == 10:
+        veeraj_square_root()
+    elif choice == 11:
+        print("Exiting the program.")
+        break
+    else:
+        print("Invalid option. Please choose a number between 1 and 11.")
