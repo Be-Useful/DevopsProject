@@ -158,7 +158,7 @@ def findMajority(arr, n):
 
 arr = [ 1, 1, 1, 1, 2, 3, 4 ]
 n = len(arr)
-majority = findMajority(arr, n)
+majority =  findMajority(arr, n)
 print(" The majority element is :" ,majority)
     
     
