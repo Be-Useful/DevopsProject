@@ -5,6 +5,7 @@ num2 = 12
 # Adding two nos
 sum = num1 + num2
 
+
 # printing values
 print("Sum of", num1, "and", num2 , "is", sum)
 
@@ -123,6 +124,47 @@ guessing_game()
 
 #I am Shreyash
 
+main
+#I am Shourya prakash
+# Python implementation for the above approach
+
+# Function to find majority element
+def findMajority(arr, n):
+    candidate = -1
+    votes = 0
+    
+    # Finding majority candidate
+    for i in range (n):
+        if (votes == 0):
+            candidate = arr[i]
+            votes = 1
+        else:
+            if (arr[i] == candidate):
+                votes += 1
+            else:
+                votes -= 1
+    count = 0
+    
+    # Checking if majority candidate occurs more than n/2
+    # times
+    for i in range (n):
+        if (arr[i] == candidate):
+            count += 1
+            
+    if (count > n // 2):
+        return candidate
+    else:
+        return -1
+
+# Driver Code 
+
+arr = [ 1, 1, 1, 1, 2, 3, 4 ]
+n = len(arr)
+majority =  findMajority(arr, n)
+print(" The majority element is :" ,majority)
+    
+    
+=======
 #I am vipul bagde and this is my contribution
 
 // C++ program to implement the approach
@@ -168,3 +210,4 @@ int main()
 	return 0;
 }
 
+main
